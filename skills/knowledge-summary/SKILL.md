@@ -74,4 +74,4 @@ Keep the emoji prefix exactly `📚`. Use bold `**知识点总结**`. Bullets op
 - [ ] 1-3 takeaways, each one sentence
 - [ ] Complex topics have an explicit life analogy first
 - [ ] Takeaways are reusable rules, not conversation recaps
-- [ ] At least one takeaway is phrased as an action ("下次…先…")
+- [ ] Every takeaway is phrased as an action ("下次…先…") — consistent with Rule 4

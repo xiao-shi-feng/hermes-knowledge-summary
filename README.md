@@ -3,7 +3,13 @@
 > **每次对话结束，给用户一条能带走的收获。**
 > Turn every chat into a lesson.
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/xiao-shi-feng/hermes-knowledge-summary)
+[![Skill Format](https://img.shields.io/badge/Skill-AGENTSKILLS.io-purple.svg)](https://agentskills.io/specification)
+
 一个让 AI 对话"不白聊"的通用技能：在回复末尾自动补一段 **📚知识点总结** —— 用 1-3 句提炼出这次对话真正有用的东西，复杂内容先配一个"说人话"的生活化类比。
+
+> **注意：本 skill 的输出为中文**（📚知识点总结 / 类比说人话 / 下次…先…）。中文用户开箱即用；其他语言用户可将输出模板自行替换为母语。
 
 **装机即用，无需配置，任何模型都适用。**
 
@@ -16,7 +22,7 @@
 | 🧠 **近因效应** | 人最容易记住最后看到的内容。结尾的金句 = 最强的记忆锚点 |
 | ⏳ **遗忘曲线** | 对话结束几小时后，90% 细节都会被忘掉。总结 = 留住那 10% 真正重要的 |
 | 🎯 **行动导向** | 普通总结是"我们聊了什么"，好总结是"你下次可以怎么做" |
-| 🗣️ **认知负荷** | 复杂话题先用生活类比破冰，老人也能听懂，再讲知识点就不费力 |
+| 🗣️ **认知负荷** | 复杂话题先用生活类比破冰，零门槛理解，再讲知识点就不费力 |
 
 > 一句话：**不是让 AI 说得更多，而是让用户记得更牢。**
 
@@ -45,6 +51,15 @@
 
 ---
 
+## 前置要求
+
+本 skill 是 **Hermes Agent**（[Nous Research](https://github.com/NousResearch/hermes-agent) 开源的跨模型 AI agent 框架）的通用技能格式，符合 [agentskills.io](https://agentskills.io/specification) 开放标准，也可被其他支持 SKILL.md 格式的 agent 使用。
+
+- **Hermes Agent 官网：** https://hermes-agent.nousresearch.com
+- **安装 Hermes：** `curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash`
+
+---
+
 ## 快速安装
 
 ### Hermes Agent（推荐）
@@ -60,7 +75,18 @@ hermes skills install knowledge-summary
 
 ### 其他 Agent（Claude Code / Codex / Cursor 等）
 
-复制 `skills/knowledge-summary/SKILL.md` 到你的技能目录即可，或将核心 5 条规则粘贴到系统提示词里：
+复制 `skills/knowledge-summary/SKILL.md` 到对应技能目录：
+
+```bash
+# Claude Code
+mkdir -p .claude/skills/knowledge-summary
+cp skills/knowledge-summary/SKILL.md .claude/skills/knowledge-summary/
+
+# 或直接复制整个目录
+cp -r skills/knowledge-summary .claude/skills/
+```
+
+> **精简替代方案（功能有损）：** 如果不支持技能目录，可将核心 5 条规则粘贴到系统提示词里。注意：此方案没有触发机制、没有版本管理，效果不如完整安装。
 
 ```
 1. 回复结尾加 📚**知识点总结**，1-3 句，绝不超
@@ -86,9 +112,11 @@ hermes skills install knowledge-summary
 
 ```
 hermes-knowledge-summary/
+├── LICENSE                          # MIT License
+├── README.md                        # 本文件
 └── skills/
     └── knowledge-summary/
-        └── SKILL.md     # 技能本体（规则 + 格式 + 避坑 + 自检清单）
+        └── SKILL.md                 # 技能本体（规则 + 格式 + 避坑 + 自检清单）
 ```
 
 ---

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>knowledge-summary — 让 AI 对话不白聊</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#0d1117;color:#c9d1d9;line-height:1.6}
+a{color:#58a6ff;text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:860px;margin:0 auto;padding:40px 24px}
+header{text-align:center;padding:60px 24px 40px;border-bottom:1px solid #21262d;margin-bottom:48px}
+h1{font-size:2.4rem;color:#f0f6fc;margin-bottom:12px}
+h1 span{background:linear-gradient(135deg,#58a6ff,#bc8cff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.tagline{font-size:1.15rem;color:#8b949e;margin-bottom:24px}
+.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:.8rem;background:#161b22;border:1px solid #30363d;color:#8b949e}
+.badge.mt{background:#1f6feb22;border-color:#1f6feb;color:#58a6ff}
+section{margin-bottom:48px}
+h2{font-size:1.3rem;color:#f0f6fc;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid #21262d}
+.comparison{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+@media(max-width:600px){.comparison{grid-template-columns:1fr}}
+.card{padding:20px;border-radius:12px;border:1px solid #30363d}
+.card.na{background:#da363315}
+.card.yes{background:#23863615}
+.card-title{font-weight:600;margin-bottom:8px;font-size:.95rem}
+.card.na .card-title{color:#f85149}
+.card.yes .card-title{color:#3fb950}
+.example{font-size:.88rem;color:#8b949e;margin-top:8px;line-height:1.7}
+code{background:#161b22;padding:2px 6px;border-radius:4px;font-size:.88em;color:#ffa657}
+pre{background:#161b22;padding:16px;border-radius:8px;overflow-x:auto;margin:12px 0;font-size:.88rem}
+pre code{background:none;color:#c9d1d9;padding:0}
+.install-box{background:#161b22;border:1px solid #30363d;border-radius:12px;padding:24px;margin-top:16px}
+.install-box h3{color:#f0f6fc;margin-bottom:12px;font-size:1rem}
+.install-box p{color:#8b949e;font-size:.9rem;margin-bottom:8px}
+.install-box code{background:#21262d}
+.principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:16px}
+.principle{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:16px}
+.principle .icon{font-size:1.4rem;margin-bottom:6px}
+.principle .title{font-weight:600;color:#f0f6fc;font-size:.9rem;margin-bottom:4px}
+.principle .desc{font-size:.8rem;color:#8b949e}
+.cta{display:inline-block;padding:12px 32px;background:#238636;color:#fff;border-radius:8px;font-weight:600;font-size:1rem;transition:background .2s}
+.cta:hover{background:#2ea043;text-decoration:none}
+.footer{text-align:center;padding:40px 24px;color:#484f58;font-size:.85rem;border-top:1px solid #21262d;margin-top:48px}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>📚 <span>knowledge-summary</span></h1>
+<p class="tagline">让 AI 对话不白聊 — 每次回复自动补一条能带走的收获</p>
+<div class="badges">
+<span class="badge mt">Hermes Agent Skill</span>
+<span class="badge">MIT License</span>
+<span class="badge">v1.0.0</span>
+<span class="badge">Agentskills.io</span>
+</div>
+</header>
+
+<section>
+<h2>它能干什么？</h2>
+<p style="color:#8b949e;margin-bottom:12px">在 AI 对话结束时，自动追加一段 <strong style="color:#3fb950">📚知识点总结</strong>，包含：</p>
+<div class="principles">
+<div class="principle"><div class="icon">🧠</div><div class="title">提炼核心</div><div class="desc">1-3句抓住对话最有价值的结论</div></div>
+<div class="principle"><div class="icon">🗣️</div><div class="title">类比说人话</div><div class="desc">复杂概念配生活化比喻，零门槛理解</div></div>
+<div class="principle"><div class="icon">🎯</div><div class="title">行动导向</div><div class="desc">不只告诉你"聊了什么"，更告诉你"下次怎么做"</div></div>
+<div class="principle"><div class="icon">⚡</div><div class="title">开箱即用</div><div class="desc">无需配置，任何模型都适用，中文环境优先</div></div>
+</div>
+</section>
+
+<section>
+<h2>效果对比</h2>
+<div class="comparison">
+<div class="card na">
+<div class="card-title">❌ 没有这个 skill</div>
+<div class="example">
+用户：免费 AI 模型有什么区别？<br><br>
+AI：免费模型有次数限制，付费更快……<br><br>
+——聊完就忘，等于没聊
+</div>
+</div>
+<div class="card yes">
+<div class="card-title">✅ 有这个 skill</div>
+<div class="example">
+用户：免费 AI 模型有什么区别？<br><br>
+AI：免费模型有次数限制，付费更快……<br><br>
+📚<strong>知识点总结</strong><br>
+- 类比：免费模型 = 实习生前台<br>
+- 免费适合简单任务，关键任务用付费<br>
+- 下次选模型前：先想清任务是"日常杂活"还是"重要工程"<br><br>
+——带走一条真正有用的判断标准
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<h2>快速安装</h2>
+<div class="install-box">
+<h3>Hermes Agent</h3>
+<p>方式一：直接安装</p>
+<pre><code>hermes skills install https://raw.githubusercontent.com/xiao-shi-feng/hermes-knowledge-summary/main/skills/knowledge-summary/SKILL.md</code></pre>
+<p>方式二：添加源，随时更新</p>
+<pre><code>hermes skills tap add xiao-shi-feng/hermes-knowledge-summary
+hermes skills install knowledge-summary</code></pre>
+</div>
+<div class="install-box">
+<h3>其他 Agent（Claude Code / Codex / Cursor 等）</h3>
+<p>复制 <code>skills/knowledge-summary/SKILL.md</code> 到对应技能目录即可使用。</p>
+</div>
+</section>
+
+<section style="text-align:center">
+<a href="https://github.com/xiao-shi-feng/hermes-knowledge-summary" class="cta">⭐ 去 GitHub 看源码</a>
+</section>
+
+<div class="footer">
+Made with ❤️ by <a href="https://github.com/xiao-shi-feng">时煜源创科技</a> · Hermes Agent Skill · MIT License
+</div>
+</div>
+</body>
+</html>

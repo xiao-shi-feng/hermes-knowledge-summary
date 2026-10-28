@@ -1,77 +1,146 @@
 ---
 name: knowledge-summary
-description: "Use when ending any conversation, reply, or explanation where the user learned something: append a 📚知识点总结 (knowledge summary) — 1-3 practical, reusable takeaways distilled from the exchange, prefixed with a plain-life analogy ('类比说人话') whenever the topic is complex. Turns every chat into a lesson the user can actually use."
-version: 1.0.0
+description: "Use at the end of any substantive reply where the user learned, decided, solved, or was advised on something: append a 📚知识点总结 with 1-3 reusable, actionable takeaways. For complex topics, open with a zero-jargon everyday-life analogy. Turns every chat into a takeaway the user can actually use."
+version: 1.1.0
 author: 时煜源创科技 (xiao-shi-feng)
 license: MIT
 platforms: [linux, macos, windows]
 metadata:
   hermes:
-    tags: [communication, summary, learning, chinese, 知识点总结]
+    tags: [communication, summary, learning, chinese, 知识点总结, opencode, agent]
 ---
 
 # 📚 知识点总结 (Knowledge Summary)
 
-## Overview
+## 一句话定位
 
-People remember the *last thing* they read (recency effect) and forget most of a long conversation within hours (Ebbinghaus forgetting curve). A deliberate closing summary exploits both: it gives the user one compact, useful takeaway they can walk away with — instead of a chat that evaporates.
+在每段有信息量的回复结尾，给出一段 **📚知识点总结**：1–3 句可复用、可执行的收获。复杂内容先给一个生活类比，让零背景的人也能秒懂。
 
-This skill makes every agent reply end with a **📚知识点总结**: 1-3 practical takeaways distilled from the conversation, in plain language, with a zero-jargon life analogy first whenever the topic is complex.
+**设计原理**：人最容易记住最后看到的内容（近因效应），也最容易忘记长篇对话的细节（遗忘曲线）。结尾的总结就是那个“记忆锚点”。
 
-## When to Use
+---
 
-Use at the end of a response when ANY of these is true:
-- The user asked a question and got an answer (factual, technical, conceptual)
-- You explained something multi-step or jargon-heavy
-- The user solved a problem / made a decision / learned a workflow
-- The user asked for advice or analysis
+## 什么时候用
 
-Do NOT use when:
-- Pure chit-chat / emotional support (no takeaway to extract)
-- The user explicitly said "no summary"
-- The response is already one sentence long (the summary would be noise)
+满足以下任意一条，就在回复末尾追加总结：
 
-## Core Rules (the whole skill in 5 rules)
+* 用户问了事实、概念、技术、流程问题，并得到了答案
+* 你解释了多步骤、带术语或带判断标准的内容
+* 用户做出了决策、解决了问题、学到了新的操作方法
+* 用户索要了建议、分析、方案
 
-1. **📚 prefix + 1-3 sentences. Never more.** Each takeaway is one sentence. Short beats thorough.
-2. **Extract, don't recap.** The takeaway is a *reusable rule/insight*, not a summary of what was said. If it reads like "we discussed X", rewrite it.
-3. **Analogy first when complex.** If the topic uses jargon or abstract concepts, open the section with one **生活化类比** (everyday-life analogy) — zero terminology, understandable by a non-technical person (e.g., an elderly relative). Then give the takeaway.
-4. **Make it actionable.** Phrase takeaways as something the user can *do next time*: "下次遇到X，先做Y".
-5. **One takeaway max per distinct point.** Pick the top 1-3 insights. Quality over quantity.
+**不要用的场景**：
 
-## Analogy Checklist (类比说人话)
+* 纯闲聊、情绪安抚（没有可提取的知识点）
+* 用户明确说“不用总结”
+* 回答本身只有一句话（总结会变成噪音）
+* 用户已经在追问同一话题的第 N 轮且没有新信息增量
 
-A good analogy must pass ALL of these:
-- [ ] Uses everyday objects/situations (kitchen, market, office, family life)
-- [ ] Zero technical terms
-- [ ] An elderly non-tech person could repeat it back correctly
-- [ ] The mapping to the real concept is obvious (state it explicitly)
+---
 
-Good example: "免费模型=实习生前台：不花钱、能干活、但复杂专业的事别指望它。📚知识点：免费AI适合简单任务，关键任务用付费模型更稳。"
+## 核心规则（5 条）
 
-## Format
+1. **📚 前缀 + 1–3 条，绝不更多**
+   每条一句话，短胜过全。超过 3 条必须砍到最关键的那几条。
+
+2. **提炼，不是复述**
+   写“下次…先…”，不写“我们讨论了…”。如果读起来像聊天记录回放，重写。
+
+3. **复杂话题，类比先行**
+   用生活化类比打开这一段：厨房、菜市场、办公室、邻里关系都行。零术语，老人能复述出来才算合格。类比之后再给知识点。
+
+4. **每条都写成动作**
+   每条必须是用户下次能照做的行为：“下次遇到 X，先做 Y”。
+
+5. **宁缺毋滥**
+   只留最值得带走的 1–3 条。质量 > 数量。
+
+---
+
+## 类比自检（说人话标准）
+
+一个好类比必须同时满足：
+
+* [ ] 用了日常事物或场景（厨房、菜市场、办公室、家庭、邻里）
+* [ ] 零专业术语
+* [ ] 不懂技术的老人能原样复述
+* [ ] 和真实概念的对应关系是显式的（要指出来，不能让人猜）
+
+**合格示例**：“免费模型 = 实习生前台——不花钱、能干活，但复杂专业的事别指望它。”
+
+**不合格示例**：“这就像缓存机制。”（这是术语，不是生活类比）
+
+---
+
+## 输出格式
+
+固定使用以下格式：
 
 ```
 📚**知识点总结**
-- （复杂话题先给类比，一句）
-- 知识点1（一句话，可执行）
-- 知识点2（一句话，可执行）
+- （复杂话题先给一句类比）
+- 知识点 1（一句话，可执行）
+- 知识点 2（一句话，可执行）
 ```
 
-Keep the emoji prefix exactly `📚`. Use bold `**知识点总结**`. Bullets optional when only one takeaway.
+* 前缀保持 `📚**知识点总结**`，加粗。
+* 只有一条知识点时可省略列表符号。
+* 类比和知识点混排即可，不需要额外标题。
 
-## Common Pitfalls
+---
 
-1. **Recap instead of extract** — "今天我们聊了GPT的用法" is a recap. "下次让AI总结长文，直接丢给它全文比贴链接更准" is a takeaway.
-2. **Too many takeaways** — 4+ bullets = information dump, kills the recency effect. Cut to the top 1-3.
-3. **Jargon in the analogy** — "这就像缓存机制" is not a life analogy. Real-life only.
-4. **Over-explaining the takeaway** — one sentence per takeaway. Details belong in the main reply, not the summary.
-5. **Skipping it when it matters most** — the more complex the topic, the more valuable the closing summary. Don't skip hard topics.
+## 示例
 
-## Verification Checklist
+### 示例 1：复杂技术问题
 
-- [ ] Starts with `📚**知识点总结**`
-- [ ] 1-3 takeaways, each one sentence
-- [ ] Complex topics have an explicit life analogy first
-- [ ] Takeaways are reusable rules, not conversation recaps
-- [ ] Every takeaway is phrased as an action ("下次…先…") — consistent with Rule 4
+用户问完 Docker 容器启动后连不上数据库的原因。
+
+回答主体结束后追加：
+
+```
+📚**知识点总结**
+- 类比说人话：容器刚启动就像新员工入职第一天，还没熟悉公司网络，这时候直接连“公司数据库”当然连不上。
+- 下次容器连不上数据库，先查容器里的服务是否真的在运行，再查容器名/网络别名拼写，最后才查应用配置。
+- 不要把数据库主机名写成“localhost”除非数据库就在这个容器里。
+```
+
+### 示例 2：一般工作建议
+
+用户问简历写太长怎么删。
+
+```
+📚**知识点总结**
+- 下次改简历，先按目标岗位 JD 删掉不相关项目，一页装不下就拆成“通用版”和“岗位定制版”。
+```
+
+### 示例 3：生活类话题
+
+用户问为什么冰箱里放太多东西食物反而坏得快。
+
+```
+📚**知识点总结**
+- 类比说人话：冰箱塞满就像冬天毛衣裹太紧，热气闷在里面散不出来，冷气也没地方循环。
+- 下次往冰箱放东西前，先清一层隔出来的冷冻/冷藏空间，再放新的，循环效率更高。
+```
+
+---
+
+## 常见错误
+
+1. **复述代替提炼** — “今天我们聊了 GPT 的用法”不是收获。改为“下次让 AI 总结长文，直接丢全文比贴链接更准”。
+2. **堆砌太多条** — 4+ 条 = 信息过载，反噬近因效应。只留最关键的 1–3 条。
+3. **类比里带术语** — “就像缓存机制”不算生活类比。换厨房/市场/办公室里的东西。
+4. **每条写太长** — 每条一句话。细节放在正文，总结只留“行动指南”。
+5. **越是难的话题越容易漏掉** — 越复杂的场景，越需要这个收尾总结。
+
+---
+
+## 最终自检清单
+
+生成回复后，逐条确认：
+
+* [ ] 以 `📚**知识点总结**` 开头
+* [ ] 只有 1–3 条，每条一句话
+* [ ] 复杂话题开头有零术语类比
+* [ ] 每条都是“下次…先…”的动作描述，不是聊天回放
+* [ ] 没有把正文里的详细步骤全部重复一遍

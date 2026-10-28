@@ -4,7 +4,7 @@
 > Turn every chat into a lesson.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/xiao-shi-feng/hermes-knowledge-summary)
+[![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/xiao-shi-feng/hermes-knowledge-summary)
 [![Skill Format](https://img.shields.io/badge/Skill-AGENTSKILLS.io-purple.svg)](https://agentskills.io/specification)
 
 一个让 AI 对话"不白聊"的通用技能：在回复末尾自动补一段 **📚知识点总结** —— 用 1-3 句提炼出这次对话真正有用的东西，复杂内容先配一个"说人话"的生活化类比。
@@ -73,11 +73,19 @@ hermes skills tap add xiao-shi-feng/hermes-knowledge-summary
 hermes skills install knowledge-summary
 ```
 
-### 其他 Agent（Claude Code / Codex / Cursor 等）
+### 其他 Agent（OpenCode / Claude Code / Codex / Cursor 等）
 
-复制 `skills/knowledge-summary/SKILL.md` 到对应技能目录：
+把 `skills/knowledge-summary/SKILL.md` 复制到你的 Agent 技能目录即可。
 
 ```bash
+# OpenCode（项目级技能目录）
+mkdir -p .agents/skills/knowledge-summary
+cp skills/knowledge-summary/SKILL.md .agents/skills/knowledge-summary/
+
+# OpenCode（用户全局技能目录，跨项目复用）
+mkdir -p ~/.agents/skills/knowledge-summary
+cp skills/knowledge-summary/SKILL.md ~/.agents/skills/knowledge-summary/
+
 # Claude Code
 mkdir -p .claude/skills/knowledge-summary
 cp skills/knowledge-summary/SKILL.md .claude/skills/knowledge-summary/
@@ -118,6 +126,18 @@ hermes-knowledge-summary/
     └── knowledge-summary/
         └── SKILL.md                 # 技能本体（规则 + 格式 + 避坑 + 自检清单）
 ```
+
+---
+
+## 版本更新
+
+* **v1.1.0**
+  * 增加多场景示例（技术 / 工作 / 生活）
+  * 细化类比自检标准和"不要使用"场景
+  * 补充 OpenCode 安装说明
+  * 提升 frontmatter 元数据与标签，便于检索
+* **v1.0.0**
+  * 首个正式版本：📚 知识点总结规则 + 类比标准 + 格式 + 自检清单
 
 ---
 
